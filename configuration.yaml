@@ -82,11 +82,11 @@ light:
   - platform: xiaomi_miio
     name: Xiaomi LED 1
     host: 192.168.88.161
-    token: b2ad999dfdf9c8572e1d3bf6dd449e74
+    token: !secret xiaomiled1_key
   - platform: xiaomi_miio
     name: Xiaomi LED 2
     host: 192.168.88.162
-    token: 53480382db9f4853d1cd167ce1741791
+    token: !secret xiaomiled2_key
     
 # View all events in a logbook
 logbook:
@@ -132,7 +132,7 @@ device_tracker:
 #  - platform: yi
 #    name: Camera
 #    host: '192.168.88.243'
-#    password: 1234qwer
+#    password: !secret yi_camera_pass
 #    path: /record
 
 # Text to speech
