@@ -65,7 +65,7 @@ media_player:
 
 #Google Assistance
 google_assistant:
-  project_id: home-assistant-188314
+  project_id: !secret ga_project_id
   client_id: !secret ga_client_id
   access_token: !secret ga_access_token
   #agent_user_id: leongtat3110@gmail.com
@@ -135,6 +135,12 @@ device_tracker:
 #    password: !secret yi_camera_pass
 #    path: /record
 
+notify:
+  - name: slack
+    platform: slack
+    api_key: !secret slack_token
+    default_channel: '#homeassistant'
+    
 # Text to speech
 tts:
   - platform: google

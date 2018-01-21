@@ -83,10 +83,10 @@
   condition: []
   id: '1514895404062'
   trigger:
-  - entity_id: binary_sensor.door_window_sensor_158d0001fa327c
-    from: 'off'
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa3274
+    from: 'on'
     platform: state
-    to: 'on'
+    to: 'off'
 - action:
   - data:
       entity_id: light.gateway_light_7811dcb211c2
@@ -168,14 +168,27 @@
 - id: On_Alert_If_Fridge_Open_1_Minutes
   alias: (Kitchen) On Alert If Fridge Open 1 Minutes
   trigger:
-    platform: state
-    entity_id: binary_sensor.door_window_sensor_158d0001fa327c
-    from: 'off'
-    to: 'on'
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa327c
     for:
       minutes: 1
+    from: 'off'
+    platform: state
+    to: 'on'
   action:
-  - service: light.turn_on
-    entity_id: light.gateway_light_7811dcb211c2
-    data:
+  - data:
       color_name: blue
+    entity_id: light.gateway_light_7811dcb211c2
+    service: light.turn_on
+  - data:
+      message: Fridge Alert Not Closed!!!
+    service: notify.slack
+- action:
+  - data:
+      entity_id: switch.garage_light
+    service: switch.turn_on
+  alias: (Garage) Turn On Light after Sunset
+  condition: []
+  id: '1516530443487'
+  trigger:
+  - event: sunset
+    platform: sun
