@@ -1,0 +1,153 @@
+sensor.broadlink_sensor_temperature:
+  friendly_name: LivingHall
+switch.living_room_fan:
+  google_assistant: true
+  google_assistant_name: LR Fan
+  icon: mdi:fan
+  assumed_state: false
+  friendly_name: Fan
+switch.living_room_light:
+  google_assistant: true
+  google_assistant_name: LR Light
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Light
+switch.play_area_fan:
+  google_assistant: true
+  google_assistant_name: PAFan
+  icon: mdi:fan
+  assumed_state: false
+  friendly_name: Fan
+switch.play_area_light_1:
+  google_assistant: true
+  google_assistant_name: PA Light
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Light 1
+switch.play_area_light_2:
+  google_assistant: true
+  google_assistant_name: PA Light
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Light 2
+switch.bed_light:
+  google_assistant: true
+  google_assistant_name: BR Light
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Small Light
+switch.staircase_light:
+  google_assistant: true
+  google_assistant_name: Staircase Light
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Light
+switch.living_room_led_front:
+  google_assistant: true
+  google_assistant_name: Front
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Front
+switch.living_room_led_middle:
+  google_assistant: true
+  google_assistant_name: Middle
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Middle
+switch.living_room_led_back:
+  google_assistant: true
+  google_assistant_name: Back
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Back
+switch.living_room_ac:
+  google_assistant: true
+  google_assistant_name: AC
+  icon: mdi:air-conditioner
+  assumed_state: false
+  friendly_name: Air-Con
+switch.tv_soundbar:
+  google_assistant: true
+  google_assistant_name: TV
+  icon: mdi:television-classic
+switch.air_filter:
+  google_assistant: true
+  google_assistant_name: Filter
+  icon: mdi:image-filter-vintage
+  friendly_name: Air Filter
+switch.air_filter_2:
+  google_assistant: true
+  google_assistant_name: Filter
+  icon: mdi:image-filter-vintage
+  friendly_name: Air Filter
+switch.led_light:
+  google_assistant: false
+  google_assistant_name: BR LED
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: LED Light
+switch.entrance_light:
+  google_assistant: false
+  google_assistant_name: Entrance Light
+  google_assistant_type: light
+  icon: mdi:lightbulb-outline
+  assumed_state: false
+  friendly_name: Light
+switch.fan:
+  google_assistant: true
+  google_assistant_name: LR Fan
+  icon: mdi:fan
+  assumed_state: false
+  friendly_name: Fan
+switch.1_side:
+  icon: mdi:gate
+  friendly_name: 1 Way
+switch.2_side:
+  icon: mdi:gate
+  friendly_name: 2 Way
+binary_sensor.motion_sensor_158d00016572ce:
+  friendly_name: Motion
+sensor.temperature_158d0001c19b0f:
+  friendly_name: Temperature
+sensor.humidity_158d0001c19b0f:
+  friendly_name: Humidity
+  icon: mdi:water-percent
+binary_sensor.door_window_sensor_158d0001fa3274:
+  friendly_name: Gate
+  icon: mdi:door-open
+binary_sensor.motion_sensor_158d0001d46f8c:
+  friendly_name: Motion
+binary_sensor.door_window_sensor_158d000200b786:
+  friendly_name: Door
+  icon: mdi:door-open
+sensor.illumination_7811dcb211c2:
+  friendly_name: Illumination
+binary_sensor.door_window_sensor_158d0001fa327c:
+  friendly_name: Fridge Door
+  icon: mdi:door-open
+light.gateway_light_7811dcb211c2:
+  friendly_name: Gateway Light
+  icon: mdi:lightbulb-outline
+switch.garage_sport_light:
+  friendly_name: Sport Light
+  icon: mdi:spotlight-beam
+switch.garage_light:
+  friendly_name: Car Porch
+  icon: mdi:ceiling-light
+switch.main_door_light:
+  friendly_name: Main Door
+  icon: mdi:lightbulb-outline
+switch.bedroom_ac:
+  icon: mdi:air-conditioner
+  friendly_name: Air-Con
+group.all_automations:
+  hidden: false

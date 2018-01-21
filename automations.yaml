@@ -1,0 +1,181 @@
+- action:
+  - data:
+      entity_id: switch.led_light
+    service: switch.turn_off
+  - data:
+      entity_id: switch.bed_light
+    service: switch.turn_off
+  alias: (Bedroom) Turn Off All Lights
+  condition: []
+  id: '1514742513212'
+  trigger:
+  - event_data:
+      click_type: hold
+      entity_id: binary_sensor.switch_158d00020163fb
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.living_room_light
+    service: switch.turn_off
+  - data:
+      entity_id: switch.living_room_fan
+    service: switch.turn_off
+  - data:
+      entity_id: switch.living_room_ac
+    service: switch.turn_off
+  - data:
+      entity_id: switch.play_area_fan,switch.play_area_light_1,switch.play_area_light_2
+    service: switch.turn_off
+  alias: (Living Room) Turn Off All
+  condition: []
+  id: '1514744362602'
+  trigger:
+  - event_data:
+      action_value: swing
+      entity_id: binary_sensor.cube_158d00010def23
+    event_type: cube_action
+    platform: event
+- action:
+  - data:
+      entity_id: switch.led_light
+    service: switch.turn_on
+  alias: (Bedroom) Turn on LED Light
+  condition: []
+  id: '1514791546670'
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d00020163fb
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.bed_light
+    service: switch.turn_on
+  alias: (Bedroom) Turn On Small Lights
+  condition: []
+  id: '1514791731043'
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00020163fb
+    event_type: click
+    platform: event
+- action:
+  - data:
+      color_name: red
+      entity_id: light.gateway_light_7811dcb211c2
+    service: light.turn_on
+  alias: (Garage) Alert When Gate not closed
+  condition: []
+  id: '1514807150275'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa3274
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.gateway_light_7811dcb211c2
+    service: light.turn_off
+  alias: (Garage) Stop Alert When Gate Closed
+  condition: []
+  id: '1514895404062'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa327c
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: light.gateway_light_7811dcb211c2
+    service: light.turn_off
+  alias: (Kitchen) Turn off Alert Fridge Close
+  condition: []
+  id: '1514895883077'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa327c
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: switch.main_door_light
+    service: switch.turn_on
+  alias: (Garage) Turn On Main Door Light (Motion)
+  condition:
+  - after: '19:00:00'
+    before: '7:30:00'
+    condition: time
+  id: '1516436799263'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001d46f8c
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: switch.main_door_light
+    service: switch.turn_off
+  alias: (Garage) Turn Off Main Door Light (Motion)
+  condition: []
+  id: '1516436959478'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d0001d46f8c
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: switch.garage_sport_light
+    service: switch.turn_on
+  - delay: 00:05:00
+  - data:
+      entity_id: switch.garage_sport_light
+    service: switch.turn_off
+  alias: (Garage) Turn On Light for 5 Mins When Gate Open
+  condition:
+  - after: '19:30:00'
+    before: 07:00:00
+    condition: time
+  id: '1516460360240'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa3274
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: switch.staircase_light
+    service: switch.turn_on
+  alias: (Staircase) Turn On Light
+  condition: []
+  id: '1516470660083'
+  trigger:
+  - event: sunset
+    platform: sun
+- action:
+  - data:
+      entity_id: switch.staircase_light
+    service: switch.turn_off
+  alias: (Staircase) Turn Off Light
+  condition: []
+  id: '1516470764444'
+  trigger:
+  - event: sunrise
+    platform: sun
+- id: On_Alert_If_Fridge_Open_1_Minutes
+  alias: (Kitchen) On Alert If Fridge Open 1 Minutes
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001fa327c
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 1
+  action:
+  - service: light.turn_on
+    entity_id: light.gateway_light_7811dcb211c2
+    data:
+      color_name: blue

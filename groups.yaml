@@ -1,0 +1,96 @@
+  default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.LivingRoom
+      - group.PlayArea
+      - group.Entrance
+      - group.Staircase
+      - group.LivingRoomLED
+      - group.Kitchen
+      - group.all_devices
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sun.sun
+      - sensor.weather_symbol
+      - device_tracker.80b03d6e2256
+      - device_tracker.lings
+  LivingRoom:
+    name: Living Room
+    entities:
+      - switch.living_room_fan
+      - switch.living_room_light
+      - switch.living_room_ac
+      - light.gateway_light_7811dcb211c2
+      - switch.TV_Soundbar
+      - switch.air_filter
+      - sensor.broadlink_sensor_temperature
+      - binary_sensor.motion_sensor_158d00016572ce
+      - sensor.illumination_7811dcb211c2      
+  PlayArea:
+    name: Play Area
+    entities:
+      - switch.play_area_fan
+      - switch.play_area_light_1
+      - switch.play_area_light_2
+  Bedroom:
+    name: Bedroom
+    view: yes
+    icon: mdi:hotel
+    entities:
+      - switch.led_light
+      - switch.fan
+      - switch.bed_light
+      - switch.bedroom_ac
+      - switch.air_filter_2
+      - binary_sensor.door_window_sensor_158d000200b786
+      - sensor.temperature_158d0001c19b0f
+      - sensor.humidity_158d0001c19b0f
+      - light.xiaomi_led_1
+      - light.xiaomi_led_2
+  Garage:
+    name: Garage
+    view: yes
+    icon: mdi:garage-open
+    entities:
+      - switch.1_side
+      - switch.2_side
+      - switch.garage_sport_light
+      - switch.garage_light
+      - switch.main_door_light
+      - binary_sensor.door_window_sensor_158d0001fa3274
+      - binary_sensor.motion_sensor_158d0001d46f8c
+  Entrance:
+    name: Entrance
+    entities:
+      - switch.entrance_light
+  Staircase:      
+    name: Staircase
+    entities:
+      - switch.staircase_light
+  LivingRoomLED:
+    name: Living Room LED
+    entities:
+      - switch.living_room_led_front
+      - switch.living_room_led_middle
+      - switch.living_room_led_back
+  Kitchen:
+    name: Kitchen
+    entities:
+      - binary_sensor.door_window_sensor_158d0001fa327c
+  Media_player:
+    name: Media Player
+    view: yes
+    icon: mdi:youtube-play
+    entities:
+      - media_player.living_room_main
+      - media_player.spotify
+  automation:
+    name: Automation
+    view: yes
+    icon: mdi:home-automation
+    entities:
+      - group.all_automations
+  
+  
