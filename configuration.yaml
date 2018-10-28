@@ -12,16 +12,23 @@ homeassistant:
   time_zone: Asia/Kuala_Lumpur
   # Customization file
   customize: !include customize.yaml
-    
+  whitelist_external_dirs:
+    - /home/pi/snapshot  
       
 # Show links to resources in log and frontend
 #introduction:
 
 # Enables the frontend
 frontend:
-
+  themes: !include_dir_merge_named themes/
 # Enables configuration UI
 config:
+
+#panel_iframe:
+#  configurator:
+#    title: 'Configurator'
+#    icon: mdi:wrench
+#    url: 'http://leongtat.duckdns.org:3218'
 
 http:
   api_password: !secret api_password
@@ -63,16 +70,20 @@ media_player:
         abc123def456: 'Living Room'
         9183abas000: 'Bed Room'
 
+cast:
+  media_player:
+  - host: 192.168.88.196
+
 #Google Assistance
-google_assistant:
-  project_id: !secret ga_project_id
-  client_id: !secret ga_client_id
-  access_token: !secret ga_access_token
+#google_assistant:
+#  project_id: !secret ga_project_id
+#  client_id: !secret ga_client_id
+#  access_token: !secret ga_access_token
   #agent_user_id: leongtat3110@gmail.com
-  api_key: !secret ga_api_key
-  exposed_domains:
-    - switch
-    - fan
+#  api_key: !secret ga_api_key
+#  exposed_domains:
+#    - switch
+#    - fan
         
 # Enables support for tracking state changes over time
 history:
@@ -97,6 +108,11 @@ map:
 # Track the sun
 sun:
 
+# weather prediction
+weather:
+  - platform: darksky
+    api_key: !secret darksky_secret
+
 # Weather prediction
 sensor:
   - platform: yr
@@ -112,6 +128,19 @@ sensor:
       - ping
       - download
       - upload
+  - platform: synologydsm
+    host: 192.168.88.247
+    port: 5000
+    username: !secret synology_id
+    password: !secret synology_pwd
+    ssl: false
+    monitored_conditions:
+      - cpu_total_load
+      - memory_real_usage
+      - network_up
+      - network_down
+      - volume_status
+      - volume_percentage_used
   
 # Presence Detection
 #device_tracker:
@@ -126,12 +155,20 @@ device_tracker:
     hosts:
       - 192.168.88.172
       - 192.168.88.160   
+
     
 #camera
+camera:
+  - platform: ffmpeg
+    input: -rtsp_transport tcp -i rtsp://192.168.88.246/ch0_0.h264
+    name: Play Area
+  - platform: ffmpeg
+    input: -rtsp_transport tcp -i rtsp://192.168.88.154/ch0_0.h264
+    name: Garage
 #camera:
 #  - platform: yi
 #    name: Camera
-#    host: '192.168.88.243'
+#    host: '192.168.88.246'
 #    password: !secret yi_camera_pass
 #    path: /record
 
@@ -140,7 +177,8 @@ notify:
     platform: slack
     api_key: !secret slack_token
     default_channel: '#homeassistant'
-    
+
+
 # Text to speech
 tts:
   - platform: google
@@ -149,3 +187,4 @@ switch: !include switches.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+climate: !include climate.yaml

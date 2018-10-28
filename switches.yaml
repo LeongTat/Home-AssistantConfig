@@ -2,6 +2,7 @@
   - platform: broadlink
     host: 192.168.88.182 
     mac: !secret broad_rmpro_mac 
+    type: rm
     switches:
       switch4:
         friendly_name: "Play Area Light 1"
@@ -88,10 +89,28 @@
       switch22:
         friendly_name: "Garage Sport Light"
         command_on: '6QpCAN8JFgkWCRYJCRYJFhYJFgkJFgkWCRYWCRYJFgkWCQkWCRYWCQkWFgkWCQkWFgkWCQkWCRYJFgkWCRYWCQkWCRYJFg=='
-        command_off: '6QpCAN8JCRYJFhYJFgkJFgkWCRYWCRYJFgkWCRYJCRYJFhYJCRYWCQkWFgkWCQkWFgkWCQkWCRYJFgkWFgkJFgkWFgkJFg=='        
+        command_off: '6QpCAN8JCRYJFhYJFgkJFgkWCRYWCRYJFgkWCRYJCRYJFhYJCRYWCQkWFgkWCQkWFgkWCQkWCRYJFgkWFgkJFgkWFgkJFg=='
+      switch23:
+        friendly_name: "Toilet Light"
+        command_on: '6QpCAN8JCRYWCRYJFgkWCQkWFgkWCRYJCRYWCRYJFgkWCQkWFgkJFhYJCRYJFgkWCRYJFhYJFgkJFhYJFgkWCQkWCRYJFg=='
+        command_off: '6QpCAN8JFgkJFhYJCRYJFhYJCRYJFhYJCRYJFgkWFgkWCQkWCRYWCRYJFgkJFhYJFgkWCQkWFgkJFhYJFgkJFgkWFgkWCQ=='
+      switch24:
+        friendly_name: "Study Room Light"
+        command_on: '6QpCAN8JCRYWCQkWCRYWCQkWCRYJFgkWFgkJFgkWFgkJFhYJCRYWCQkWFgkWCQkWFgkJFgkWFgkJFgkWCRYWCQkWCRYWCQ=='
+        command_off: '6QpCAN8JFgkWCRYJFgkJFgkWCRYWCQkWCRYWCRYJFgkWCRYJFgkWCRYJFgkWCQkWCRYWCRYJCRYWCQkWFgkWCQkWFgkJFg=='
+      switch25:
+        friendly_name: "Study Room Fans"
+        command_on: '6QpCAN8JFgkJFhYJCRYJFhYJFgkJFgkWCRYWCQkWCRYWCQkWCRYJFgkWCRYJFgkWFgkWCQkWFgkJFgkWFgkJFhYJFgkWCQ=='
+        command_off: '6QpCAN8JFgkWCQkWCRYWCRYJCRYWCRYJCRYJFhYJCRYJFhYJFgkJFgkWFgkWCQkWFgkJFhYJCRYJFgkWFgkJFhYJCRYJFg=='
+      switch26:
+        friendly_name: "Study Room Small Light"
+        command_on: '6QpCAN8JFgkJFgkWCRYWCRYJFgkJFhYJFgkJFgkWCRYWCQkWFgkJFhYJFgkWCRYJFgkJFhYJCRYWCQkWCRYWCQkWFgkWCQ=='
+        command_off: '6QpCAN8JFgkWCQkWCRYWCRYJCRYJFgkWFgkJFgkWCRYWCRYJCRYJFhYJFgkWCQkWCRYWCRYJFgkWCQkWCRYJFhYJFgkJFg=='
+        
   - platform: broadlink
     host: 192.168.88.181 
     mac: !secret broad_rmmini_mac
+    type: rm_mini
     switches:
       switch101:
         friendly_name: "Air Filter"

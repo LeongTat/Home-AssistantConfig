@@ -19,70 +19,123 @@
   LivingRoom:
     name: Living Room
     entities:
-      - switch.living_room_fan
-      - switch.living_room_light
-      - switch.living_room_ac
+      - switch.switch2
+      - switch.switch3
+      - switch.switch11
       - light.gateway_light_7811dcb211c2
-      - switch.TV_Soundbar
-      - switch.air_filter
+      - switch.switch12
+      - switch.switch13
       - sensor.broadlink_sensor_temperature
       - binary_sensor.motion_sensor_158d00016572ce
       - sensor.illumination_7811dcb211c2      
   PlayArea:
     name: Play Area
     entities:
-      - switch.play_area_fan
-      - switch.play_area_light_1
-      - switch.play_area_light_2
+      - switch.switch6
+      - switch.switch4
+      - switch.switch5
+      - camera.play_area
+  Kitchen:
+    name: Kitchen
+    view: yes
+    icon: mdi:fridge
+    entities:
+      - group.Kitchen_Group      
+  Kitchen_Group:
+    name: Kitchen
+    entities:
+      - binary_sensor.motion_sensor_158d0001d46f8c
+      - sensor.temperature_158d00020ec28b
+      - sensor.humidity_158d00020ec28b
+      - binary_sensor.door_window_sensor_158d0001fa327c
+      - sensor.temperature_158d00021011d9
+      - sensor.humidity_158d00021011d9
+  Bedroom_Group:
+    name: Bedroom
+    entities:
+      - binary_sensor.door_window_sensor_158d000200b786
+      - sensor.temperature_158d0001c19b0f
+      - sensor.humidity_158d0001c19b0f      
   Bedroom:
     name: Bedroom
     view: yes
     icon: mdi:hotel
     entities:
-      - switch.led_light
-      - switch.fan
-      - switch.bed_light
-      - switch.bedroom_ac
-      - switch.air_filter_2
-      - binary_sensor.door_window_sensor_158d000200b786
-      - sensor.temperature_158d0001c19b0f
-      - sensor.humidity_158d0001c19b0f
+      - switch.switch15
+      - switch.switch16
+      - switch.switch17
+      - switch.switch101
+      - switch.switch102
+      - group.Bedroom_Group
       - light.xiaomi_led_1
       - light.xiaomi_led_2
+  Garage_Group:
+    name: Garage
+    entities:
+      - binary_sensor.door_window_sensor_158d0001fa3274
+      - binary_sensor.motion_sensor_158d0001e5476e
+      - sensor.illumination_158d0001e5476e
   Garage:
     name: Garage
     view: yes
     icon: mdi:garage-open
     entities:
-      - switch.1_side
-      - switch.2_side
-      - switch.garage_sport_light
-      - switch.garage_light
-      - switch.main_door_light
-      - binary_sensor.door_window_sensor_158d0001fa3274
-      - binary_sensor.motion_sensor_158d0001d46f8c
+      - switch.switch18
+      - switch.switch19
+      - switch.switch22
+      - switch.switch21
+      - switch.switch20
+      - group.Garage_Group
+      - camera.garage
   Entrance:
     name: Entrance
     entities:
-      - switch.entrance_light
+      - switch.switch1
   Staircase:      
     name: Staircase
     entities:
-      - switch.staircase_light
+      - switch.switch7
   LivingRoomLED:
     name: Living Room LED
     entities:
-      - switch.living_room_led_front
-      - switch.living_room_led_middle
-      - switch.living_room_led_back
-  Kitchen:
-    name: Kitchen
+      - switch.switch8
+      - switch.switch9
+      - switch.switch10
+  Toilet_Room:
+    name: Toilet
+    view: yes
+    icon: mdi:human-male-female
     entities:
-      - binary_sensor.door_window_sensor_158d0001fa327c
+      - group.Toilet_Room_Group
+      - group.Toilet_Room_Light
+  Toilet_Room_Group:
+    name: Toilet
+    entities: 
+      - binary_sensor.motion_sensor_158d000204bfa9
+      - sensor.illumination_158d000204bfa9
+  Toilet_Room_Light:
+    name: Switch
+    entities:
+      - switch.switch24
+      - switch.switch25
+      - switch.switch26
+      - switch.switch23
+  Buttons:
+    name: Buttons
+    view: yes
+    icon: mdi:radiobox-marked
+    entities:
+      - group.Button_Group
+  Button_Group:
+    name: Buttons
+    entities:
+      - binary_sensor.switch_158d0001f41d8e
+      - binary_sensor.switch_158d00020163fb
+      - binary_sensor.switch_158d0002243d03      
   Media_player:
     name: Media Player
     view: yes
-    icon: mdi:youtube-play
+    icon: mdi:youtube
     entities:
       - media_player.living_room_main
       - media_player.spotify

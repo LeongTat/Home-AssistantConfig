@@ -1,0 +1,43 @@
+
+  - platform: broadlink
+    name: Living Room AC
+    host: 192.168.88.182
+    mac: !secret broad_rmpro_mac
+    ircodes_ini: 'broadlink_climate_codes/mitsubishi_electric.ini'
+    min_temp: 16
+    max_temp: 31
+    target_temp: 24
+    target_temp_step: 1
+    temp_sensor: sensor.broadlink_sensor_temperature
+    default_operation: 'off'
+    default_fan_mode: mid
+    customize:
+      operations:
+        - 'off'
+        - cool
+      fan_modes:
+        - low
+        - mid
+        - high
+        - highest
+  - platform: broadlink
+    name: Bedroom AC
+    host: 192.168.88.181
+    mac: !secret broad_rmmini_mac
+    ircodes_ini: 'broadlink_climate_codes/mitsubishi_electric.ini'
+    min_temp: 16
+    max_temp: 31
+    target_temp: 24
+    target_temp_step: 1
+    temp_sensor: sensor.temperature_158d0001c19b0f
+    default_operation: 'off'
+    default_fan_mode: mid
+    customize:
+      operations:
+        - 'off'
+        - cool
+      fan_modes:
+        - low
+        - mid
+        - high
+        - highest

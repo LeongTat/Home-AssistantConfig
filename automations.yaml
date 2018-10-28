@@ -1,33 +1,33 @@
-- action:
-  - data:
-      entity_id: switch.led_light
-    service: switch.turn_off
-  - data:
-      entity_id: switch.bed_light
-    service: switch.turn_off
-  alias: (Bedroom) Turn Off All Lights
-  condition: []
-  id: '1514742513212'
+- id: '1514742513212'
+  alias: (Bedroom:Remote) Turn Off All Lights
   trigger:
   - event_data:
       click_type: hold
       entity_id: binary_sensor.switch_158d00020163fb
     event_type: click
     platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switch15
+    service: switch.turn_off
+  - data:
+      entity_id: switch.switch17
+    service: switch.turn_off
 - action:
   - data:
-      entity_id: switch.living_room_light
+      entity_id: switch.switch3
     service: switch.turn_off
   - data:
-      entity_id: switch.living_room_fan
+      entity_id: switch.switch2
     service: switch.turn_off
   - data:
-      entity_id: switch.living_room_ac
+      entity_id: switch.switch11
     service: switch.turn_off
   - data:
-      entity_id: switch.play_area_fan,switch.play_area_light_1,switch.play_area_light_2
+      entity_id: switch.switch4,switch.switch5,switch.switch6
     service: switch.turn_off
-  alias: (Living Room) Turn Off All
+  alias: (Living Room:Remote) Turn Off All
   condition: []
   id: '1514744362602'
   trigger:
@@ -36,38 +36,38 @@
       entity_id: binary_sensor.cube_158d00010def23
     event_type: cube_action
     platform: event
-- action:
-  - data:
-      entity_id: switch.led_light
-    service: switch.turn_on
-  alias: (Bedroom) Turn on LED Light
-  condition: []
-  id: '1514791546670'
+- id: '1514791546670'
+  alias: (Bedroom:Remote) Turn on LED Light
   trigger:
   - event_data:
       click_type: single
       entity_id: binary_sensor.switch_158d00020163fb
     event_type: click
     platform: event
-- action:
-  - data:
-      entity_id: switch.bed_light
-    service: switch.turn_on
-  alias: (Bedroom) Turn On Small Lights
   condition: []
-  id: '1514791731043'
+  action:
+  - data:
+      entity_id: switch.switch15
+    service: switch.turn_on
+- id: '1514791731043'
+  alias: (Bedroom:Remote) Turn On Small Lights
   trigger:
   - event_data:
       click_type: double
       entity_id: binary_sensor.switch_158d00020163fb
     event_type: click
     platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switch17
+    service: switch.turn_on
 - action:
   - data:
       color_name: red
       entity_id: light.gateway_light_7811dcb211c2
     service: light.turn_on
-  alias: (Garage) Alert When Gate not closed
+  alias: (Garage:Gate) Red Light When Not Close
   condition: []
   id: '1514807150275'
   trigger:
@@ -79,7 +79,7 @@
   - data:
       entity_id: light.gateway_light_7811dcb211c2
     service: light.turn_off
-  alias: (Garage) Stop Alert When Gate Closed
+  alias: (Garage:Gate) Off Red Light When Closed
   condition: []
   id: '1514895404062'
   trigger:
@@ -91,7 +91,7 @@
   - data:
       entity_id: light.gateway_light_7811dcb211c2
     service: light.turn_off
-  alias: (Kitchen) Turn off Alert Fridge Close
+  alias: (Kitchen:Fridge) Off Alert After Close
   condition: []
   id: '1514895883077'
   trigger:
@@ -101,40 +101,41 @@
     to: 'off'
 - action:
   - data:
-      entity_id: switch.main_door_light
+      entity_id: switch.switch20
     service: switch.turn_on
-  alias: (Garage) Turn On Main Door Light (Motion)
+  alias: (Garage:Main Door Light) Turn On If Motion
   condition:
-  - after: '19:00:00'
-    before: '7:30:00'
-    condition: time
+  - after: sunset
+    after_offset: -00:15:00
+    before_offset: 00:15:00
+    condition: sun
   id: '1516436799263'
   trigger:
-  - entity_id: binary_sensor.motion_sensor_158d0001d46f8c
+  - entity_id: binary_sensor.motion_sensor_158d0001e5476e
     from: 'off'
     platform: state
     to: 'on'
 - action:
   - data:
-      entity_id: switch.main_door_light
+      entity_id: switch.switch20
     service: switch.turn_off
-  alias: (Garage) Turn Off Main Door Light (Motion)
+  alias: (Garage:Main Door Light) Turn Off X Motion
   condition: []
   id: '1516436959478'
   trigger:
-  - entity_id: binary_sensor.motion_sensor_158d0001d46f8c
+  - entity_id: binary_sensor.motion_sensor_158d0001e5476e
     from: 'on'
     platform: state
     to: 'off'
 - action:
   - data:
-      entity_id: switch.garage_sport_light
+      entity_id: switch.switch22
     service: switch.turn_on
   - delay: 00:05:00
   - data:
-      entity_id: switch.garage_sport_light
+      entity_id: switch.switch22
     service: switch.turn_off
-  alias: (Garage) Turn On Light for 5 Mins When Gate Open
+  alias: (Garage:Sport Light) On for 5 Mins When Gate Open
   condition:
   - after: '19:30:00'
     before: 07:00:00
@@ -145,28 +146,30 @@
     from: 'off'
     platform: state
     to: 'on'
-- action:
-  - data:
-      entity_id: switch.staircase_light
-    service: switch.turn_on
-  alias: (Staircase) Turn On Light
-  condition: []
-  id: '1516470660083'
+- id: '1516470660083'
+  alias: (Staircase:Light) Turn On After Sunset
   trigger:
   - event: sunset
+    offset: -00:15:00
     platform: sun
-- action:
-  - data:
-      entity_id: switch.staircase_light
-    service: switch.turn_off
-  alias: (Staircase) Turn Off Light
   condition: []
-  id: '1516470764444'
+  action:
+  - data:
+      entity_id: switch.switch7
+    service: switch.turn_on
+- id: '1516470764444'
+  alias: (Staircase:Light) Turn Off After Sunrise
   trigger:
   - event: sunrise
+    offset: 00:15:00
     platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switch7
+    service: switch.turn_off
 - id: On_Alert_If_Fridge_Open_1_Minutes
-  alias: (Kitchen) On Alert If Fridge Open 1 Minutes
+  alias: (Kitchen:Fridge Door) On Alert If Open 1 Minutes
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d0001fa327c
     for:
@@ -180,15 +183,194 @@
     entity_id: light.gateway_light_7811dcb211c2
     service: light.turn_on
   - data:
-      message: Fridge Alert Not Closed!!!
+      message: 'Alert: Fridge Not Closed!!!'
+    service: notify.slack
+- id: '1516530443487'
+  alias: (Garage:Car Porch Light) Turn On after Sunset
+  trigger:
+  - event: sunset
+    offset: -00:15:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switch21
+    service: switch.turn_on
+- id: '1516548234204'
+  alias: (Garage:Car Porch Light) Turn Off After Sunrise
+  trigger:
+  - event: sunrise
+    offset: 00:15:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      entity_id: switch.switch21
+    service: switch.turn_off
+- id: Garage_Send_Alert_If_Gate_Open_3_Minutes
+  alias: (Garage:Gate) Send Alert If Open 3 Minutes
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa3274
+    for:
+      minutes: 3
+    from: 'off'
+    platform: state
+    to: 'on'
+  action:
+  - data:
+      filename: /home/pi/snapshot/camera.garage_snapshot.jpg
+    entity_id: camera.garage
+    service: camera.snapshot
+  - data:
+      data:
+        file:
+          path: /home/pi/snapshot/camera.garage_snapshot.jpg
+      message: Front Gate View
+      title: 'Alert: Front Gate Not Close!!! '
     service: notify.slack
 - action:
   - data:
-      entity_id: switch.garage_light
+      entity_id: switch.switch23
     service: switch.turn_on
-  alias: (Garage) Turn On Light after Sunset
+  - data:
+      entity_id: switch.switch24
+    service: switch.turn_on
+  - data:
+      entity_id: switch.switch26
+    service: switch.turn_on
+  alias: (Toilet:Light)Turn On If Motion
   condition: []
-  id: '1516530443487'
+  id: '1532840998534'
   trigger:
-  - event: sunset
-    platform: sun
+  - entity_id: binary_sensor.motion_sensor_158d000204bfa9
+    from: 'off'
+    platform: state
+    to: 'on'
+- action:
+  - data:
+      entity_id: switch.switch23
+    service: switch.turn_off
+  - data:
+      entity_id: switch.switch24
+    service: switch.turn_off
+  - data:
+      entity_id: switch.switch26
+    service: switch.turn_off
+  alias: (Toilet:Light) Turn Off X Motion
+  condition: []
+  id: '1532841283697'
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d000204bfa9
+    from: 'on'
+    platform: state
+    to: 'off'
+- action:
+  - data:
+      entity_id: switch.switch6
+    service: switch.turn_on
+  - data:
+      entity_id: switch.switch4
+    service: switch.turn_on
+  - data:
+      entity_id: switch.switch5
+    service: switch.turn_on
+  alias: (PlayArea:Button) Turn on All
+  condition: []
+  id: '1532853811498'
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0001f41d8e
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: group.playarea
+    service: switch.turn_off
+  alias: (PlayArea:Button) Turn Off All
+  condition: []
+  id: '1532854124102'
+  trigger:
+  - event_data:
+      click_type: hold
+      entity_id: binary_sensor.switch_158d0001f41d8e
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.switch3
+    service: switch.turn_off
+  - data:
+      entity_id: switch.switch2
+    service: switch.turn_off
+  - data:
+      entity_id: switch.switch11
+    service: switch.turn_off
+  - data:
+      entity_id: group.playarea
+    service: switch.turn_off
+  alias: (Living Room:Button) Turn off All
+  condition: []
+  id: '1532854591550'
+  trigger:
+  - event_data:
+      click_type: hold
+      entity_id: binary_sensor.switch_158d0002243d03
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.switch3
+    service: switch.turn_on
+  - data:
+      entity_id: switch.switch2
+    service: switch.turn_on
+  alias: (Living Room:Button) Turn on All
+  condition: []
+  id: '1532854756234'
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d0002243d03
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.switch11
+    service: switch.turn_on
+  alias: (Living Room:Button) Turn on AC
+  condition: []
+  id: '1532855104881'
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d0002243d03
+    event_type: click
+    platform: event
+- action:
+  - data:
+      entity_id: switch.switch3
+    service: switch.turn_on
+  - data:
+      entity_id: switch.switch2
+    service: switch.turn_on
+  alias: (Living Room:Back Home) Turn on Light
+  condition:
+  - below: '100'
+    condition: numeric_state
+    entity_id: sensor.illumination_7811dcb211c2
+  - condition: state
+    entity_id: binary_sensor.motion_sensor_158d00016572ce
+    state: 'off'
+  - condition: state
+    entity_id: device_tracker.80b03d6e2256
+    state: not_home
+  - condition: state
+    entity_id: device_tracker.lings
+    state: not_home
+  id: '1532865134627'
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d0001fa3274
+    from: 'off'
+    platform: state
+    to: 'on'

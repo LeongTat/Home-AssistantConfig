@@ -1,117 +1,73 @@
 sensor.broadlink_sensor_temperature:
   friendly_name: LivingHall
-switch.living_room_fan:
-  google_assistant: true
-  google_assistant_name: LR Fan
+switch.switch2:
   icon: mdi:fan
   assumed_state: false
   friendly_name: Fan
-switch.living_room_light:
-  google_assistant: true
-  google_assistant_name: LR Light
-  google_assistant_type: light
+switch.switch3:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Light
-switch.play_area_fan:
-  google_assistant: true
-  google_assistant_name: PAFan
+switch.switch6:
   icon: mdi:fan
   assumed_state: false
   friendly_name: Fan
-switch.play_area_light_1:
-  google_assistant: true
-  google_assistant_name: PA Light
-  google_assistant_type: light
+switch.switch4:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Light 1
-switch.play_area_light_2:
-  google_assistant: true
-  google_assistant_name: PA Light
-  google_assistant_type: light
+switch.switch5:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Light 2
-switch.bed_light:
-  google_assistant: true
-  google_assistant_name: BR Light
-  google_assistant_type: light
+switch.switch17:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Small Light
-switch.staircase_light:
-  google_assistant: true
-  google_assistant_name: Staircase Light
-  google_assistant_type: light
+switch.switch7:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Light
-switch.living_room_led_front:
-  google_assistant: true
-  google_assistant_name: Front
-  google_assistant_type: light
+switch.switch8:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Front
-switch.living_room_led_middle:
-  google_assistant: true
-  google_assistant_name: Middle
-  google_assistant_type: light
+switch.switch9:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Middle
-switch.living_room_led_back:
-  google_assistant: true
-  google_assistant_name: Back
-  google_assistant_type: light
+switch.switch10:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Back
-switch.living_room_ac:
-  google_assistant: true
-  google_assistant_name: AC
+switch.switch11:
   icon: mdi:air-conditioner
   assumed_state: false
   friendly_name: Air-Con
-switch.tv_soundbar:
-  google_assistant: true
-  google_assistant_name: TV
+switch.switch12:
   icon: mdi:television-classic
-switch.air_filter:
-  google_assistant: true
-  google_assistant_name: Filter
+switch.switch13:
   icon: mdi:image-filter-vintage
   friendly_name: Air Filter
-switch.air_filter_2:
-  google_assistant: true
-  google_assistant_name: Filter
+switch.switch101:
   icon: mdi:image-filter-vintage
   friendly_name: Air Filter
-switch.led_light:
-  google_assistant: false
-  google_assistant_name: BR LED
-  google_assistant_type: light
+switch.switch15:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: LED Light
-switch.entrance_light:
-  google_assistant: false
-  google_assistant_name: Entrance Light
-  google_assistant_type: light
+switch.switch1:
   icon: mdi:lightbulb-outline
   assumed_state: false
   friendly_name: Light
-switch.fan:
-  google_assistant: true
-  google_assistant_name: LR Fan
+switch.switch16:
   icon: mdi:fan
   assumed_state: false
   friendly_name: Fan
-switch.1_side:
+switch.switch18:
   icon: mdi:gate
   friendly_name: 1 Way
-switch.2_side:
+switch.switch19:
   icon: mdi:gate
   friendly_name: 2 Way
 binary_sensor.motion_sensor_158d00016572ce:
@@ -133,21 +89,60 @@ sensor.illumination_7811dcb211c2:
   friendly_name: Illumination
 binary_sensor.door_window_sensor_158d0001fa327c:
   friendly_name: Fridge Door
-  icon: mdi:door-open
+  icon: mdi:fridge
 light.gateway_light_7811dcb211c2:
   friendly_name: Gateway Light
   icon: mdi:lightbulb-outline
-switch.garage_sport_light:
+switch.switch22:
   friendly_name: Sport Light
   icon: mdi:spotlight-beam
-switch.garage_light:
+switch.switch21:
   friendly_name: Car Porch
   icon: mdi:ceiling-light
-switch.main_door_light:
+switch.switch20:
   friendly_name: Main Door
   icon: mdi:lightbulb-outline
-switch.bedroom_ac:
+switch.switch102:
   icon: mdi:air-conditioner
   friendly_name: Air-Con
 group.all_automations:
   hidden: false
+sensor.temperature_158d00021011d9:
+  friendly_name: Fridge
+sensor.humidity_158d00021011d9:
+  friendly_name: Fridge Humidity
+  icon: mdi:water-percent
+sensor.temperature_158d00020ec28b:
+  friendly_name: Kitchen
+sensor.humidity_158d00020ec28b:
+  friendly_name: Kitchen Humidity
+  icon: mdi:water-percent
+sensor.illumination_158d0001e5476e:
+  friendly_name: Illumination
+binary_sensor.motion_sensor_158d0001e5476e:
+  friendly_name: Motion
+binary_sensor.motion_sensor_158d000204bfa9:
+  friendly_name: Toilet Motion
+sensor.illumination_158d000204bfa9:
+  friendly_name: Illumination
+binary_sensor.switch_158d00020163fb:
+  friendly_name: Bedroom
+binary_sensor.switch_158d0002243d03:
+  friendly_name: Living Room
+binary_sensor.switch_158d0001f41d8e:
+  friendly_name: Play Area
+switch.switch24:
+  assumed_state: false
+  icon: mdi:lightbulb-outline
+switch.switch25:
+  icon: mdi:fan
+  assumed_state: false
+  friendly_name: Fan
+switch.switch26:
+  assumed_state: false
+  icon: mdi:lightbulb-outline
+switch.switch23:
+  friendly_name: Toilet Light
+  icon: mdi:human-male-female
+weather.dark_sky:
+  friendly_name: Klang Weather
