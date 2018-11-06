@@ -4,4 +4,8 @@
 !.gitignore
 secrets.yaml
 known_devices.yaml
-!www/*
+!/www
+!/broadlink_climate_codes
+!/custom_components
+!/images
+!/themes
