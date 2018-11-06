@@ -1,0 +1,11 @@
+{
+    "1": "switch.all",
+    "2": "media_player.spotify",
+    "3": "switch.fans",
+    "4": "media_player.living_room_main",
+    "5": "media_player.living_room_gspeaker",
+    "6": "switch.switch_1",
+    "7": "switch.switch_2",
+    "8": "group.all_switches",
+    "9": "group.playarea_lights"
+}

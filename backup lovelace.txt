@@ -1,0 +1,105 @@
+  - icon: mdi:home-assistant
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Living Hall
+    background: radial-gradient(crimson, skyblue)
+    theme: dark-mode
+    cards:
+      #- type: markdown
+       # title: Living Room
+       # content: >
+       #  Control Everything Here.
+      - type: picture-glance
+        image: /local/living_room.png
+        title: Living room
+        entities:
+          - switch.switch2
+          - switch.switch3
+          - switch.switch11
+          - switch.switch12
+          - switch.switch13
+          - binary_sensor.motion_sensor_158d00016572ce  
+      - type: gauge
+        title: Temperature
+        entity: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+climate:
+  - platform: broadlink
+    name: Mitshubishi Electric
+    host: 192.168.88.182
+    mac: '34:EA:34:E4:83:A9'
+    ircodes_ini: 'broadlink_climate_codes/mitsubishi_electric.ini'
+    min_temp: 16
+    max_temp: 31
+    target_temp: 20
+    target_temp_step: 1
+    temp_sensor: sensor.broadlink_sensor_temperature
+    default_operation: 'off'
+    default_fan_mode: mid
+    customize:
+      operations:
+        - 'off'
+        - cool
+      fan_modes:
+        - low
+        - mid
+        - high
+        - highest
+        
+          - sensor.broadlink_sensor_temperature
+      - type: gauge
+        title: Brightness
+        entity: 
+          - sensor.illumination_7811dcb211c2 
+        min: 0
+        max: 1000
+      - type: entities
+        title: Living Hall
+        entities:
+          - switch.switch2
+          - switch.switch3
+          - switch.switch11
+          - light.gateway_light_7811dcb211c2
+          - switch.switch12
+          - switch.switch13
+      - type: entities
+        title: LED Light
+        entities:
+          - switch.switch8
+          - switch.switch9
+          - switch.switch10
+      - type: entities
+        title: Entrance
+        entities:
+          - switch.switch1
+      - type: entities
+        title: Staircase Light
+        entities:
+          - switch.switch7
+          
+ - id: 9  # Automatically created id
+    icon: mdi:home-automation
+    name: Automations
+    cards:
+      - id: 870441d7da054b0bb9a8f4bed5566e21  # Automatically created id
+        type: entities
+        title: Living Room AC
+        entities:
+          - input_select.climate.set_operation_mode
+          - input_select.climate.set_temperature
+          - input_number.climate.turn_off
+          - input_number. climate.turn_on
+          - sensor.broadlink_sensor_temperature

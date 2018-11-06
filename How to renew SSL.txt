@@ -1,0 +1,2 @@
+
+root@raspberrypi:/home/pi/letsencrypt# ./letsencrypt-auto renew --quiet --no-self-upgrade --standalone --preferred-challenges http-01
