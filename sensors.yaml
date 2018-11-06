@@ -1,0 +1,60 @@
+  - platform: darksky
+    api_key: !secret darksky_secret
+    forecast:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - icon
+      - summary
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - wind_speed
+      - wind_bearing
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - uv_index
+      - daily_summary
+      - pressure
+      - visibility
+    update_interval:
+      minutes: 5
+  - platform: yr
+    name: "Weather"
+  - platform: broadlink
+    update_interval: 60
+    host: 192.168.88.182
+    mac: !secret broad_rmpro_mac
+    monitored_conditions:
+      - 'temperature'
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: synologydsm
+    host: 192.168.88.247
+    port: 5000
+    username: !secret synology_id
+    password: !secret synology_pwd
+    ssl: false
+    monitored_conditions:
+      - cpu_total_load
+      - memory_real_usage
+      - network_up
+      - network_down
+      - volume_status
+      - volume_percentage_used
+  

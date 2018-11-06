@@ -5,7 +5,11 @@ resources:
     type: js
   - url: /local/my-webfont.css
     type: css
-  - url: /local/custom-lovelace/thermostat-card/thermostat-card.js?v=1
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=11
+    type: js
+  - url: /local/custom_ui/dark-sky-weather-card.css
+    type: css
+  - url: /local/custom_ui/card-modder.js
     type: module
 
 # Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
@@ -169,13 +173,19 @@ views:
     name: Car Porch
     themes: dark-mode
     cards:
+      - type: glance
+        title: Car Porch
+        entities:
+          - binary_sensor.vibration_158d0002a22411
+          - binary_sensor.door_window_sensor_158d0001fa3274
+          - binary_sensor.motion_sensor_158d0001e5476e
+          - sensor.illumination_158d0001e5476e
+          - states.binary_sensor.vibration_158d0002a22411.attributes.last_updated
+
       - id: 9ca0bfa4dde94656b069f53f15ba5df4  # Automatically created id
         type: picture-glance
         title: Car Porch
         entities:
-          - binary_sensor.door_window_sensor_158d0001fa3274
-          - binary_sensor.motion_sensor_158d0001e5476e
-          - sensor.illumination_158d0001e5476e
           - switch.switch22
           - switch.switch21
           - switch.switch20
@@ -193,7 +203,7 @@ views:
             tap_action: toggle
             entity:
               - switch.switch19
-
+      
 
 ##################################################################          
 #                          Bedroom                               #
@@ -406,6 +416,9 @@ views:
             entity: media_player.living_room_main
             name: Soundbar
           - type: media-control
+            entity: media_player.living_room_tv
+            name: Chromecast
+          - type: media-control
             entity: media_player.spotify
             name: Spotify
 
@@ -458,8 +471,46 @@ views:
 ##################################################################          
 #                         AC                                     #
 ##################################################################    
-  - icon: mdi:weather-cloudy        
+  - id: 9
+    icon: mdi:weather-cloudy        
     name: Weather
+    type: vertical-stack
     cards:
-      - type: weather-forecast
-        entity: weather.dark_sky
+      - type: custom:card-modder
+        card:
+          type: custom:dark-sky-weather-card
+          entity_sun: sun.sun
+          entity_daily_summary: sensor.bom_gc_forecast_detailed_summary_0
+          entity_current_conditions: sensor.dark_sky_icon
+          entity_humidity: sensor.bom_humd
+          entity_pressure: sensor.bom_pres
+          entity_temperature: sensor.bom_temp
+          entity_visibility: sensor.dark_sky_visibility
+          entity_wind_bearing: sensor.bom_wind_bear
+          entity_wind_speed: sensor.bom_wind_sp
+          entity_forecast_high_temp_1: sensor.bom_gc_forecast_max_temp_c_1
+          entity_forecast_high_temp_2: sensor.bom_gc_forecast_max_temp_c_2
+          entity_forecast_high_temp_3: sensor.bom_gc_forecast_max_temp_c_3
+          entity_forecast_high_temp_4: sensor.bom_gc_forecast_max_temp_c_4
+          entity_forecast_high_temp_5: sensor.bom_gc_forecast_max_temp_c_5
+          entity_forecast_low_temp_1: sensor.bom_gc_forecast_min_temp_c_1
+          entity_forecast_low_temp_2: sensor.bom_gc_forecast_min_temp_c_2
+          entity_forecast_low_temp_3: sensor.bom_gc_forecast_min_temp_c_3
+          entity_forecast_low_temp_4: sensor.bom_gc_forecast_min_temp_c_4
+          entity_forecast_low_temp_5: sensor.bom_gc_forecast_min_temp_c_5
+          entity_forecast_icon_1: sensor.dark_sky_icon_1
+          entity_forecast_icon_2: sensor.dark_sky_icon_2
+          entity_forecast_icon_3: sensor.dark_sky_icon_3
+          entity_forecast_icon_4: sensor.dark_sky_icon_4
+          entity_forecast_icon_5: sensor.dark_sky_icon_5
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 400px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          color: "#999999"
+          box-shadow: 3px 3px rgba(0,0,0,0.4)     
+            
+                  

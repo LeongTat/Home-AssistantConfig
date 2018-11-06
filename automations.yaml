@@ -211,23 +211,24 @@
   alias: (Garage:Gate) Send Alert If Open 3 Minutes
   trigger:
   - entity_id: binary_sensor.door_window_sensor_158d0001fa3274
-    for:
-      minutes: 3
+    for: 0:03:00
     from: 'off'
     platform: state
     to: 'on'
   action:
   - data:
-      filename: /home/pi/snapshot/camera.garage_snapshot.jpg
+      entity_id: ' camera.garage'
+      filename: /var/opt/homeassistant/www/snapshots/camera.garage_snapshot.jpg
     entity_id: camera.garage
     service: camera.snapshot
   - data:
       data:
-        file:
-          path: /home/pi/snapshot/camera.garage_snapshot.jpg
+        attachment:
+          content-type: jpeg
+          url: https://leongtat.duckdns.org:8123/local/snapshots/camera.garage_snapshot.jpg
       message: Front Gate View
       title: 'Alert: Front Gate Not Close!!! '
-    service: notify.slack
+    service: notify.ios_leong_tats_iphone
 - action:
   - data:
       entity_id: switch.switch23
@@ -374,3 +375,26 @@
     from: 'off'
     platform: state
     to: 'on'
+- id: '1541417519899'
+  alias: (Garage:Door Bell) iOS Notification
+  trigger:
+  - event_data:
+      entity_id: binary_sensor.vibration_158d0002a22411
+      movement_type: vibrate
+    event_type: xiaomi_aqara.movement
+    platform: event
+  condition: []
+  action:
+  - delay: 00:00:05
+  - data:
+      entity_id: ' camera.garage'
+      filename: /var/opt/homeassistant/www/snapshots/camera.doorbell.jpg
+    service: camera.snapshot
+  - data:
+      data:
+        attachment:
+          content-type: jpeg
+          url: https://leongtat.duckdns.org:8123/local/snapshots/camera.doorbell.jpg
+      message: Check who's here?
+      title: 'Alert: Someone pressed door bell!!! '
+    service: notify.ios_leong_tats_iphone

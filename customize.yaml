@@ -78,8 +78,8 @@ sensor.humidity_158d0001c19b0f:
   friendly_name: Humidity
   icon: mdi:water-percent
 binary_sensor.door_window_sensor_158d0001fa3274:
-  friendly_name: Gate
-  icon: mdi:door-open
+  friendly_name: Auto Gate
+  icon: mdi:gate
 binary_sensor.motion_sensor_158d0001d46f8c:
   friendly_name: Motion
 binary_sensor.door_window_sensor_158d000200b786:
@@ -146,3 +146,7 @@ switch.switch23:
   icon: mdi:human-male-female
 weather.dark_sky:
   friendly_name: Klang Weather
+binary_sensor.vibration_158d0002a22411:
+  device_class: vibration
+  friendly_name: Door Bell
+  icon: mdi:bell-ring-outline

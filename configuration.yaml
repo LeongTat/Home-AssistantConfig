@@ -156,8 +156,16 @@ device_tracker:
       - 192.168.88.172
       - 192.168.88.160   
 
-    
-#camera
+ios:
+  push:
+    categories:
+      - name: CarPorch
+        identifier: 'CarPorch'      
+        actions:
+          - identifier: 'Close_Car_Porch_Gate'
+            title: 'Close Car Porch Gate'   
+        
+        #camera
 camera:
   - platform: ffmpeg
     input: -rtsp_transport tcp -i rtsp://192.168.88.246/ch0_0.h264
@@ -165,6 +173,9 @@ camera:
   - platform: ffmpeg
     input: -rtsp_transport tcp -i rtsp://192.168.88.154/ch0_0.h264
     name: Garage
+  - platform: ffmpeg
+    input: -rtsp_transport tcp -i rtsp://192.168.88.243/ch0_0.h264
+    name: Kitchen
 #camera:
 #  - platform: yi
 #    name: Camera
@@ -177,6 +188,9 @@ notify:
     platform: slack
     api_key: !secret slack_token
     default_channel: '#homeassistant'
+  - name: ios
+    platform: ios
+    target: !secret ios_notify
 
 
 # Text to speech
@@ -188,3 +202,4 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 climate: !include climate.yaml
+sensor: !include sensors.yaml
