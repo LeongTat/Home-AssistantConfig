@@ -1,0 +1,587 @@
+title: My Awesome Home
+# Include external resources
+resources:
+  - url: /local/my-custom-card.js
+    type: js
+  - url: /local/my-webfont.css
+    type: css
+  - url: /local/custom_ui/dark-sky-weather-card.js?v=14
+    type: js
+  - url: /local/custom_ui/dark-sky-weather-card.css
+    type: css
+  - url: /local/custom_ui/card-modder.js
+    type: module
+  - url: /local/custom_ui/weather-card.js?v=3
+    type: js
+
+# Optional background for all views. Check https://developer.mozilla.org/en-US/docs/Web/CSS/background for more examples.
+background: center / cover no-repeat url("/background.png") fixed
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  - weblink.router
+views:
+    # View tab title.
+  - icon: mdi:home-assistant
+    # Optional unique id for direct access /lovelace/${id}
+    id: Living Hall
+    # Optional background (overwrites the global background).
+    #background: radial-gradient(crimson, skyblue)
+    # Each view can have a different theme applied. Theme should be defined in the frontend.
+    theme: dark-mode
+    background: center / cover no-repeat url("/local/lovelace/background-15.gif") fixed
+    # The cards to show on this view.
+    type: vertical-stack
+    cards:
+      - type: custom:card-modder 
+        card:
+          type: entity-filter
+          entities:
+            - device_tracker.80b03d6e2256
+            - device_tracker.lings
+          state_filter:
+            - home
+          card:
+            type: glance
+            title: Presence
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 68px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+      - type: markdown
+        content: >
+          # Living Room  
+      - id: dfeee5c277a346ecb3850ca0e34e2dc2  # Automatically created id
+        type: picture-elements
+        image: /local/living_room2.png
+        elements:
+          - type: state-icon
+            icon: mdi:lightbulb
+            entity: switch.switch3
+            tap_action: toggle
+            navigation_path: /lovelace/2
+            style:
+              top: 90%
+              left: 30%
+          - type: state-icon
+            entity: switch.switch2
+            tap_action: toggle
+            style:
+              top: 90%
+              left: 45%
+          - type: state-icon
+            entity: switch.switch11
+            tap_action: toggle
+            navigation_path: /lovelace/2
+            style:
+              top: 90%
+              left: 60%
+          - type: state-icon
+            entity: switch.switch12
+            tap_action: toggle
+            navigation_path: /lovelace/2
+            style:
+              top: 90%
+              left: 75%
+          - type: state-icon
+            entity: switch.switch13
+            tap_action: toggle
+            navigation_path: /lovelace/2
+            style:
+              top: 90%
+              left: 90%
+          - type: state-icon
+            entity: binary_sensor.motion_sensor_158d00016572ce
+            style:
+              top: 90%
+              left: 10%
+          - type: state-label
+            entity: sensor.broadlink_sensor_temperature
+            style:
+              top: 15%
+              left: 31%
+              color: black
+          - type: state-icon
+            entity: sensor.broadlink_sensor_temperature
+            style:
+              top: 15%
+              left: 21%
+              color: black
+          - type: state-label
+            entity: sensor.illumination_7811dcb211c2
+            style:
+              top: 25%
+              left: 32%
+              color: black
+          - type: state-icon
+            entity: sensor.illumination_7811dcb211c2
+            style:
+              top: 25%
+              left: 21%
+              color: black  
+      - type: markdown
+        content: >
+          # (Living Room) LED Light
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            name: Front
+            tap_action: toggle
+            entity:
+              - switch.switch8
+          - type: entity-button
+            name: Middle
+            tap_action: toggle
+            entity:
+              - switch.switch9    
+          - type: entity-button
+            name: Back
+            tap_action: toggle
+            entity:    
+              - switch.switch10
+      - type: markdown
+        content: >
+          # Play Area
+      - id: 3a3160dbf09d4c08912c445e31e4aa94  # Automatically created id
+        type: picture-glance
+        title: Play Area
+        entities:
+          - switch.switch6
+          - switch.switch4
+          - switch.switch5
+        camera_image: camera.play_area      
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            name: Entrance Light
+            tap_action: toggle
+            entity:
+              - switch.switch1
+          - type: entity-button
+            name: Staircase Light
+            tap_action: toggle
+            entity:
+              - switch.switch7
+
+#      - type: picture-entity
+#        image: https://www.home-assistant.io/images/default-social.png
+#        entity: light.bed_light
+    # Specify a tab icon if you want the view tab to be an icon.
+
+##################################################################          
+#                          Car Porch                             #
+##################################################################    
+  - id: 1  # Automatically created id
+    icon: mdi:garage-open
+    name: Car Porch
+    themes: dark-mode
+    cards:
+      - type: glance
+        title: Car Porch
+        entities:
+          - binary_sensor.vibration_158d0002a22411
+          - binary_sensor.door_window_sensor_158d0001fa3274
+          - binary_sensor.motion_sensor_158d0001e5476e
+          - sensor.illumination_158d0001e5476e
+      - id: 9ca0bfa4dde94656b069f53f15ba5df4  # Automatically created id
+        type: picture-glance
+        title: Car Porch (Live)
+        entities:
+          - switch.switch22
+          - switch.switch21
+          - switch.switch20
+        camera_image: camera.garage
+      - id: ef446207bc12460694d9611760b452b5  # Automatically created id
+        type: horizontal-stack
+        cards:
+          - type: entity-button
+            name: 1 Side
+            tap_action: toggle
+            entity:
+              - switch.switch18
+          - type: entity-button
+            name: 2 Side
+            tap_action: toggle
+            entity:
+              - switch.switch19
+      - type: picture-elements
+        image: /local/snapshots/camera_gate_snapshot.jpg
+        title: Last Gate Open
+        elements:
+          - type: state-icon
+            entity: binary_sensor.door_window_sensor_158d0001fa3274
+            style:
+              top: 93%
+              left: 10%
+              color: white
+      - type: picture-elements
+        image: /local/snapshots/camera_doorbell.jpg
+        title: Last Bell
+        elements:
+          - type: state-icon
+            entity: binary_sensor.vibration_158d0002a22411
+            style:
+              top: 93%
+              left: 10%
+              color: white
+     # - type: markdown
+     #   content: >
+     #     [Last Doorbell Snapshot](https://leongtat.duckdns.org:8123/local/snapshots/camera_doorbell.jpg)
+     # - type: markdown
+     #   content: >    
+     #     [Last Gate Snapshot](https://leongtat.duckdns.org:8123/local/snapshots/camera_gate_snapshot.jpg)  
+      
+
+##################################################################          
+#                          Bedroom                               #
+##################################################################          
+  - id: 2  # Automatically created id
+    icon: mdi:hotel
+    name: Bedroom
+    themes: dark-mode
+    type: vertical-stack
+    cards:
+      - type: custom:card-modder 
+        card:
+          type: picture-elements
+          image: /local/bedroom4.png
+          title: Bedroom
+          elements:
+            - type: state-icon
+              entity: binary_sensor.door_window_sensor_158d000200b786
+              style:
+                top: 93%
+                left: 10%
+                color: black
+            - type: state-icon
+              entity: sensor.temperature_158d0001c19b0f
+              style:
+                top: 15%
+                left: 43%
+                color: white
+            - type: state-label
+              entity: sensor.temperature_158d0001c19b0f
+              style:
+                top: 15%
+                left: 53%
+                color: white
+            - type: state-icon
+              entity: sensor.humidity_158d0001c19b0f
+              style:
+                top: 30%
+                left: 43%
+                color: white
+            - type: state-label
+              entity: sensor.humidity_158d0001c19b0f
+              style:
+                top: 30%
+                left: 53%
+                color: white
+            - type: state-icon
+              entity: switch.switch15
+              tap_action: toggle
+              style:
+                top: 93%
+                left: 50%
+                color: black
+            - type: state-icon
+              entity: switch.switch16
+              tap_action: toggle
+              style:
+                top: 93%
+                left: 60%
+                color: black
+            - type: state-icon
+              entity: switch.switch17
+              tap_action: toggle
+              style:
+                top: 93%
+                left: 70%
+                color: black
+            - type: state-icon
+              entity: switch.switch101
+              tap_action: toggle
+              style:
+                top: 93%
+                left: 80%
+                color: black
+            - type: state-icon
+              entity: switch.switch102
+              tap_action: toggle
+              style:
+                top: 93%
+                left: 90%
+                color: black
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 68px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)        
+      - type: custom:card-modder 
+        card:
+          type: entities
+          title: Light Slider
+          entities:
+            - light.xiaomi_led_1
+            - light.xiaomi_led_2
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 68px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)    
+      - type: custom:card-modder 
+        card:     
+          type: thermostat
+          entity: climate.bedroom_ac
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 68px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+##################################################################          
+#                      Study Room                                #
+##################################################################
+  - id: 3  # Automatically created id
+    icon: mdi:book-open-page-variant
+    name: Study Room
+    themes: dark-mode
+    type: vertical-stack
+    cards:
+      - type: custom:card-modder 
+        card:
+          type: picture-glance
+          image: /local/study.jpg
+          title: Study Room
+          entities:
+            - binary_sensor.motion_sensor_158d000204bfa9
+            - sensor.illumination_158d000204bfa9
+            - switch.switch24
+            - switch.switch25
+            - switch.switch26
+            - switch.switch23
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 68px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+##################################################################          
+#                          Fridge                                #
+##################################################################
+  - id: 4  # Automatically created id
+    icon: mdi:fridge
+    # Title of the view. Will be used as the tooltip for tab icon
+    name: Kitchen & Fridge
+    themes: dark-mode
+    type: vertical-stack
+    cards:
+      - type: custom:card-modder 
+        card:
+          type: picture-elements
+          image: /local/kitchen.png
+          title: Kitchen & Fridge
+          elements:
+            - type: state-icon
+              entity: binary_sensor.motion_sensor_158d0001d46f8c
+              style:
+                top: 25%
+                left: 20%
+                color: white
+            - type: state-label
+              entity: binary_sensor.motion_sensor_158d0001d46f8c
+              style:
+                top: 37%
+                left: 20%
+                color: white
+            - type: state-icon
+              entity: sensor.temperature_158d00020ec28b
+              style:
+                top: 25%
+                left: 50%
+                color: white
+            - type: state-label
+              entity: sensor.temperature_158d00020ec28b
+              style:
+                top: 37%
+                left: 50%
+                color: white
+            - type: state-icon
+              entity: sensor.humidity_158d00020ec28b
+              style:
+                top: 25%
+                left: 80%
+                color: white
+            - type: state-label
+              entity: sensor.humidity_158d00020ec28b
+              style:
+                top: 37%
+                left: 80%
+                color: white
+            - type: state-icon
+              entity: binary_sensor.door_window_sensor_158d0001fa327c
+              style:
+                top: 65%
+                left: 20%
+                color: white
+            - type: state-label
+              icon: mdi:fridge
+              entity: binary_sensor.door_window_sensor_158d0001fa327c
+              style:
+                top: 77%
+                left: 20%
+                color: white
+            - type: state-icon
+              entity: sensor.temperature_158d00021011d9
+              style:
+                top: 65%
+                left: 50%
+                color: white
+            - type: state-label
+              entity: sensor.temperature_158d00021011d9
+              style:
+                top: 77%
+                left: 50%
+                color: white
+            - type: state-icon
+              entity: sensor.humidity_158d00021011d9
+              style:
+                top: 65%
+                left: 80%
+                color: white
+            - type: state-label
+              entity: sensor.humidity_158d00021011d9
+              style:
+                top: 77%
+                left: 80%
+                color: white     
+        style:                 
+          background-image: url("/local/lovelace/cardbackK.png")
+          background-repeat: no-repeat
+          background-color: rgba(50,50,50,0.3)
+          background-size: 100% 68px
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+##################################################################          
+#                         Media Player                           #
+##################################################################
+  - id: 5  # Automatically created id
+    icon: mdi:youtube
+    name: Media Player
+    cards:
+      - id: b652cb03d28044ba8ab77e721fa5a1c8  # Automatically created id
+        type: vertical-stack
+        cards:
+          - type: media-control
+            entity: media_player.living_room_main
+            name: Soundbar
+          - type: media-control
+            entity: media_player.living_room_tv
+            name: Chromecast
+          - type: media-control
+            entity: media_player.spotify
+            name: Spotify
+
+##################################################################          
+#                         Systems                                #
+##################################################################
+  - id: 6  # Automatically created id
+    icon: mdi:settings-outline
+    name: Systems
+    cards:
+      - id: c41c8977f5654a8885e250fbc01a54f5  # Automatically created id
+        type: entities
+        title: Network Speed
+        entities:
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
+          - sensor.speedtest_ping
+      - id: bd27058c63b04bec9dbd81156c247e95  # Automatically created id
+        type: entities
+        title: Synology
+        entities:
+          - sensor.cpu_load_total
+          - sensor.memory_usage_real
+          - sensor.network_up
+          - sensor.network_down
+          - sensor.status_volume_1
+          - sensor.volume_used_volume_1
+
+##################################################################          
+#                         Automations                            #
+##################################################################            
+  - id: 7  # Automatically created id
+    icon: mdi:home-automation
+    name: Automations
+    cards:
+      - id: 41459ea46f8e42f187dcf779a53724d3  # Automatically created id
+        type: entities
+        entities:
+          - group.all_automations
+
+##################################################################          
+#                         AC                                     #
+##################################################################            
+  - id: 8  # Automatically created id
+    icon: mdi:air-conditioner
+    name: Air Conditioner
+    cards:
+      - type: thermostat
+        entity: climate.living_room_ac
+##################################################################          
+#                         AC                                     #
+##################################################################    
+  - id: 9
+    icon: mdi:weather-cloudy
+    title: Weather
+    cards:
+      - type: custom:weather-card
+        entity_weather: weather.yweather
+        entity_sun: sun.sun
+        entity_daily_summary: sensor.dark_sky_daily_summary
+        
+  - id: 10
+    icon: mdi:weather-cloudy
+    title: Weather
+#    garage_door_tilt_sensor_alarm_level: Weather
+    cards:
+      - type: custom:dark-sky-weather-card
+        entity_sun: sun.sun
+        entity_daily_summary: sensor.dark_sky_daily_summary
+        entity_current_conditions: sensor.dark_sky_icon  
+        entity_humidity: sensor.dark_sky_humidity
+        entity_pressure: sensor.dark_sky_pressure
+        entity_temperature: sensor.dark_sky_temperature
+        entity_visibility: sensor.dark_sky_visibility
+        entity_wind_bearing: sensor.dark_sky_wind_bearing
+        entity_wind_speed: sensor.dark_sky_wind_speed
+        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1
+        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2
+        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3
+        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4
+        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5
+        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature
+        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1
+        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2
+        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3
+        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4
+        entity_forecast_icon_1: sensor.dark_sky_icon_1
+        entity_forecast_icon_2: sensor.dark_sky_icon_2
+        entity_forecast_icon_3: sensor.dark_sky_icon_3
+        entity_forecast_icon_4: sensor.dark_sky_icon_4
+        entity_forecast_icon_5: sensor.dark_sky_icon_5
+ 

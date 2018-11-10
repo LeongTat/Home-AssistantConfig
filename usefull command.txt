@@ -1,1 +1,7 @@
 systemctl restart hass.service
+
+Search Replace
+Search Mode - Regex
+Find what ^\s
+Replace with <2 space characters>
+Option 2:

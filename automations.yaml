@@ -218,14 +218,14 @@
   action:
   - data:
       entity_id: ' camera.garage'
-      filename: /var/opt/homeassistant/www/snapshots/camera.garage_snapshot.jpg
+      filename: /var/opt/homeassistant/www/snapshots/camera_gate_snapshot.jpg
     entity_id: camera.garage
     service: camera.snapshot
   - data:
       data:
         attachment:
           content-type: jpeg
-          url: https://leongtat.duckdns.org:8123/local/snapshots/camera.garage_snapshot.jpg
+          url: https://leongtat.duckdns.org:8123/local/snapshots/camera_gate_snapshot.jpg
       message: Front Gate View
       title: 'Alert: Front Gate Not Close!!! '
     service: notify.ios_leong_tats_iphone
@@ -388,13 +388,13 @@
   - delay: 00:00:05
   - data:
       entity_id: ' camera.garage'
-      filename: /var/opt/homeassistant/www/snapshots/camera.doorbell.jpg
+      filename: /var/opt/homeassistant/www/snapshots/camera_doorbell.jpg
     service: camera.snapshot
   - data:
       data:
         attachment:
           content-type: jpeg
-          url: https://leongtat.duckdns.org:8123/local/snapshots/camera.doorbell.jpg
+          url: https://leongtat.duckdns.org:8123/local/snapshots/camera_doorbell.jpg
       message: Check who's here?
       title: 'Alert: Someone pressed door bell!!! '
     service: notify.ios_leong_tats_iphone
