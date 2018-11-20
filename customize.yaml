@@ -150,3 +150,5 @@ binary_sensor.vibration_158d0002a22411:
   device_class: vibration
   friendly_name: Door Bell
   icon: mdi:bell-ring-outline
+sensor.home_to_office:
+  icon: mdi:car-side

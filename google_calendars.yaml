@@ -1,0 +1,42 @@
+
+- cal_id: sofenap78da61a9qsl50thaljjujgg4i@import.calendar.google.com
+  entities:
+  - device_id: sofenap78da61a9qsl50thaljjujgg4iimportcalendargooglecom
+    ignore_availability: true
+    name: sofenap78da61a9qsl50thaljjujgg4i@import.calendar.google.com
+    track: true
+
+- cal_id: itpp.ashley@gmail.com
+  entities:
+  - device_id: digital_it__deployment_calendar
+    ignore_availability: true
+    name: Digital IT - Deployment Calendar
+    track: true
+
+- cal_id: kg6a023mrqf4c6dlne6lvnipd8@group.calendar.google.com
+  entities:
+  - device_id: manchester_united
+    ignore_availability: true
+    name: Manchester United
+    track: true
+
+- cal_id: leongtat3110@gmail.com
+  entities:
+  - device_id: leongtat3110gmailcom
+    ignore_availability: true
+    name: leongtat3110@gmail.com
+    track: true
+
+- cal_id: '#contacts@group.v.calendar.google.com'
+  entities:
+  - device_id: contacts
+    ignore_availability: true
+    name: Contacts
+    track: true
+
+- cal_id: en.malaysia#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_malaysia
+    ignore_availability: true
+    name: Holidays in Malaysia
+    track: true

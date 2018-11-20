@@ -117,33 +117,6 @@ weather:
     woeid: 28347209
 
 # Weather prediction
-sensor:
-  - platform: yr
-    name: "Weather"
-  - platform: broadlink
-    update_interval: 60
-    host: 192.168.88.182
-    mac: !secret broad_rmpro_mac
-    monitored_conditions:
-      - 'temperature'
-  - platform: speedtest
-    monitored_conditions:
-      - ping
-      - download
-      - upload
-  - platform: synologydsm
-    host: 192.168.88.247
-    port: 5000
-    username: !secret synology_id
-    password: !secret synology_pwd
-    ssl: false
-    monitored_conditions:
-      - cpu_total_load
-      - memory_real_usage
-      - network_up
-      - network_down
-      - volume_status
-      - volume_percentage_used
   
 # Presence Detection
 #device_tracker:
@@ -195,7 +168,14 @@ notify:
     platform: ios
     target: !secret ios_notify
 
+google:
+  client_id: !secret google_client_id
+  client_secret: !secret google_client_secret
 
+custom_updater:
+  card_urls:
+    - https://raw.githubusercontent.com/rdehuyss/homeassistant-lovelace-google-calendar-card/master/custom_updater.json  
+    
 # Text to speech
 tts:
   - platform: google

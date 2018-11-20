@@ -60,7 +60,7 @@
   - platform: yweather
     woeid: 91739087
   - platform: google_travel_time
-    api_key: AIzaSyCmOa4kI7bX4FuuTk5918WWC5b2iZ6eBow
+    api_key: !secret google_travel_time_key
     origin: 2.9673, 101.4492
     destination: 3.0689, 101.5705
     name: "Home to Office"
